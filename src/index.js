@@ -1,4 +1,4 @@
-import { cid } from 'is-ipfs'
+import { cid } from "is-ipfs";
 
 const isIPFS = require("is-ipfs");
 
@@ -9,19 +9,19 @@ class IpfsGatewayTools {
     if (typeof url !== "string") {
       throw new Error("url is not string");
     }
-    const splitUrl = url.split(/\/|\?/)
+    const splitUrl = url.split(/\/|\?/);
 
     //handle ipns
-    const regex = /ip[fn]s\/.*?(?=\/|$|\?)/
+    const regex = /ip[fn]s\/.*?(?=\/|$|\?)/;
 
-    const matches = url.match(regex)
+    const matches = url.match(regex);
 
     if (matches?.length) {
-      const path = matches[0]
+      const path = matches[0];
       return {
         containsCid: true,
-        cid: path.split('/')[1]
-      }
+        cid: path.split("/")[1],
+      };
     }
 
     for (const split of splitUrl) {
