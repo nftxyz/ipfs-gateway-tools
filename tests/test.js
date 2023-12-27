@@ -30,6 +30,22 @@ describe("containsCID function testing", () => {
       )
     ).toEqual(expectedResult);
   });
+    test("returns true if CID has dot", () => {
+        const CIDToLookFor = "tokens.uniswap.org";
+        const expectedResult = {
+            containsCid: true,
+            cid: CIDToLookFor,
+        };
+        expect(ipfsGatewayTools.containsCID(`https://cloudflare-ipfs.com/ipns/${CIDToLookFor}`)).toEqual(
+            expectedResult
+        );
+
+        expect(
+            ipfsGatewayTools.containsCID(
+                `https://ipfs.io/ipfs/${CIDToLookFor}?filename=IMG_20210917_135500_HDR`
+            )
+        ).toEqual(expectedResult);
+    });
 });
 
 describe("convertToDesiredGateway function testing", () => {
